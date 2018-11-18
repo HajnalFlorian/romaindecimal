@@ -1,0 +1,137 @@
+ALGORITHMES CHIFFRE ROMAIN 
+BUT: Entrer un nombre entier ou romain et le convertir 
+ENTRER: un nombtre entier ou romain 
+SORTIR: sa version convertie
+
+VAR
+	choix : ENTIER
+
+PROCEDURE deviromain ()
+	VAR
+	num : ENTIER
+
+	DEBUT
+	ECRIRE "entrer un entier "
+	LIRE interger
+	TANT QUE num>0
+	FAIRE
+		SI num > 1000
+		ALORS
+			ECRIRE "M"
+			num <- num-1000
+		SINON
+		SI num > 900
+		ALORS
+			ECRIRE "CM"
+			num <- num-900
+		SINON
+				SI num > 500
+		ALORS
+			ECRIRE "D"
+			num <- num-500
+		SINON
+				SI num > 400
+		ALORS
+			ECRIRE "CD"
+			num <- num-400
+		SINON
+				SI num > 100
+		ALORS
+			ECRIRE "C"
+			num <- num-100
+		SINON
+				SI num > 90
+		ALORS
+			ECRIRE "XC"
+			num <- num-90
+		SINON
+				SI num > 50
+		ALORS
+			ECRIRE "L"
+			num <- num-50
+		SINON
+				SI num > 40
+		ALORS
+			ECRIRE "XL"
+			num <- num-40
+		SINON
+				SI num > 10
+		ALORS
+			ECRIRE "X"
+			num <- num-10
+		SINON
+				SI num > 9
+		ALORS
+			ECRIRE "IX"
+			num <- num-
+		SINON
+				SI num > 5
+		ALORS
+			ECRIRE "V"
+			num <- num-5
+		SINON
+				SI num > 4
+		ALORS
+			ECRIRE "IV"
+			num <- num-4
+		SINON
+			ECRIRE "I"
+			num <- nom-1
+	FINTANTQUE
+	FINPROCEDUR
+
+PROCEDURE romaindeci ()
+	VAR
+		nLongueur, i, j, nDeci : ENTIER 
+		Tableau nTab(100) en ENTIER 
+		Tableau cRom(100) en CAR
+	DEBUT 
+		ECRIRE "Entrer un chiffre romain"
+		LIRE cRom
+		nLongueur <- LONGUEUR[cRom]
+		POUR i ALLANT DE 0 A nLongueur AU PAS DE 
+		FAIRE
+			SI cRom(i)="I" ALORS
+				nTab(i)<- 1
+
+			SINON SI cRom(i)="V" ALORS
+				nTab(i)<- 5
+			SINON SI cRom(i)="X" ALORS
+				nTab(i)<- 10
+			SINON SI cRom(i)="L" ALORS
+				nTab(i)<- 50
+			SINON SI cRom(i)="C" ALORS
+				nTab(i)<- 100
+			SINON SI cRom(i)="D" ALORS
+				nTab(i)<- 500
+			SINON SI cRom(i)="M" ALORS
+				nTab(i)<- 1000			
+			FINSI
+		FINPOUR
+
+		nDeci <-nTab(nLongueur-1)
+
+		POUR i ALLANT DE nLongueur-1  A 0 AU PAS DE -1
+		FAIRE
+			SI nTab(i)>nTab(i-1) ALORS
+			nDeci <- nDeci- nTab(i-1)
+			SINON SI nTab(i)=nTab(i-1) OU nTab(i)<nTab(i-1) ALORS
+				nDeci<- nDeci + nTab(i-1)
+			FINSI
+			
+		FINPOUR
+
+		ECRIRE "Le decimal des chiffre romain est : ", nDeci
+		FINPROCEDURE
+DEBUT
+	ECRIRE "choissez 1 pour converti de decimal a romain ou 2 pour romain a decimal"
+	LIRE choix 
+	SI (choix=1)
+	ALORS
+		deciromain
+		
+	SINON SI (choix=2)
+		romaindeci
+	FINSI 
+	
+FIN
